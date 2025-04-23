@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  TasksApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: tasks-api
+      StageName: dev
+      Cors: 
+        AllowMethods: "'GET, POST, PUT, DELETE'"
+        AllowOrigins: "'*'"
+      DefinitionBody:
+        swagger: "2.0"
+        info:
+          title: "Tasks API"
+          version: "1.0"
+        paths:
+          /tasks:
+            post:
+              summary: "Create a task"
+              operationId: "createTask"
+              consumes:
+                - "application/json"
+              produces:
+                - "application/json"
+              x-amazon-apigateway-integration:
+                uri: arn:aws:apigateway:localstack:lambda:path/2015-03-31/functions/arn:aws:lambda:localstack:function:create_task/invocations
+                httpMethod: POST
+                type: aws_proxy
+          /tasks/{id}:
+            get:
+              summary: "Get a task"
+              operationId: "getTask"
+              consumes:
+                - "application/json"
+              produces:
+                - "application/json"
+              x-amazon-apigateway-integration:
+                uri: arn:aws:apigateway:localstack:lambda:path/2015-03-31/functions/arn:aws:lambda:localstack:function:read_task/invocations
+                httpMethod: GET
+                type: aws_proxy
+            put:
+              summary: "Update a task"
+              operationId: "updateTask"
+              consumes:
+                - "application/json"
+              produces:
+                - "application/json"
+              x-amazon-apigateway-integration:
+                uri: arn:aws:apigateway:localstack:lambda:path/2015-03-31/functions/arn:aws:lambda:localstack:function:update_task/invocations
+                httpMethod: PUT
+                type: aws_proxy
+            delete:
+              summary: "Delete a task"
+              operationId: "deleteTask"
+              consumes:
+                - "application/json"
+              produces:
+                - "application/json"
+              x-amazon-apigateway-integration:
+                uri: arn:aws:apigateway:localstack:lambda:path/2015-03-31/functions/arn:aws:lambda:localstack:function:delete_task/invocations
+                httpMethod: DELETE
+                type: aws_proxy
