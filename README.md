@@ -1,25 +1,27 @@
-# Task Manager Application
 
-A full-stack task management application built with Angular 19 frontend and AWS Lambda + DynamoDB backend (using LocalStack for local development).
+## 🧰 Tecnologias Utilizadas
 
-## Project Structure
+- **Angular 19**: Frontend SPA moderno com TypeScript.
+- **AWS Lambda**: Backend serverless para manipulação de dados.
+- **Terraform**: Provisionamento e gerenciamento da infraestrutura.
+- **LocalStack**: Simulação local da AWS (Lambda, S3, DynamoDB, etc).
+- **Docker**: Containerização do ambiente local para fácil desenvolvimento.
 
-```
-task-manager/
-├── frontend/             --> Angular 19 application
-├── backend/
-│   ├── lambda/          --> AWS Lambda functions
-│   │   ├── create_task.py
-│   │   ├── list_tasks.py
-│   │   ├── update_task.py
-│   │   └── delete_task.py
-│   └── docker-compose.yml --> LocalStack configuration
-```
+---
+
+## 🚀 Como Rodar o Projeto
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/seu-usuario/task-manager.git
+cd task-manager
+
 
 ## Prerequisites
 
 - Node.js (latest LTS version)
-- Python 3.8+
+- Python 3.9+
 - Docker and Docker Compose
 - AWS CLI (for local development with LocalStack)
 
@@ -98,4 +100,5 @@ task-manager/
 
 - Frontend code is in the `frontend/src` directory
 - Lambda functions are in the `backend/lambda` directory
-- LocalStack configuration is in `backend/docker-compose.yml`
+- LocalStack configuration is in `localstack/docker-compose.yml`
+- Terraform configuration is in `terraform/`
