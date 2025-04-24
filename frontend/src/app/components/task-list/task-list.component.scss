@@ -1,0 +1,103 @@
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+  
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+  
+      h1 {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+  
+      .add-task-btn {
+        background-color: #3b82f6;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: #2563eb;
+        }
+      }
+    }
+  
+    .loading,
+    .no-tasks {
+      text-align: center;
+      padding: 1rem;
+    }
+  
+    .error {
+      background-color: #fee2e2;
+      color: #b91c1c;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .task-list {
+      display: grid;
+      gap: 1rem;
+  
+      .task-item {
+        border: 1px solid #e5e7eb;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  
+        .task-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+  
+          .task-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+  
+            input[type="checkbox"] {
+              width: 1.25rem;
+              height: 1.25rem;
+            }
+  
+            .completed {
+              text-decoration: line-through;
+            }
+          }
+  
+          .task-actions {
+            display: flex;
+            gap: 0.5rem;
+  
+            button {
+              background: none;
+              border: none;
+              cursor: pointer;
+              font-weight: 500;
+  
+              &.edit {
+                color: #3b82f6;
+              }
+  
+              &.delete {
+                color: #ef4444;
+              }
+            }
+          }
+        }
+  
+        .description {
+          margin-top: 0.5rem;
+          color: #4b5563;
+        }
+      }
+    }
+  }
+  

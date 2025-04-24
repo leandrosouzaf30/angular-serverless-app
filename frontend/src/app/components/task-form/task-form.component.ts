@@ -9,69 +9,8 @@ import { Task } from '../../models/task.model';
   selector: 'app-task-form',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-    <div class="container mx-auto p-4">
-      <h1 class="text-xl font-bold mb-4">{{ isEditing ? 'Edit Task' : 'Create New Task' }}</h1>
-      
-      <div *ngIf="error" class="bg-red-100 text-red-700 p-4 rounded mb-4">
-        {{ error }}
-      </div>
-
-      <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
-        <div class="mb-4">
-          <label for="title" class="block mb-1">Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            [(ngModel)]="task.title"
-            required
-            class="w-full p-2 border rounded"
-          >
-        </div>
-
-        <div class="mb-4">
-          <label for="description" class="block mb-1">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            [(ngModel)]="task.description"
-            rows="3"
-            class="w-full p-2 border rounded"
-          ></textarea>
-        </div>
-
-        <div class="mb-4">
-          <label class="flex items-center">
-            <input
-              type="checkbox"
-              name="completed"
-              [(ngModel)]="task.completed"
-              class="mr-2"
-            >
-            <span>Completed</span>
-          </label>
-        </div>
-
-        <div class="flex gap-3">
-          <button
-            type="submit"
-            [disabled]="!taskForm.form.valid || loading"
-            class="bg-blue-500 text-white px-4 py-2 rounded disabled:bg-blue-300"
-          >
-            {{ loading ? 'Saving...' : 'Save Task' }}
-          </button>
-          <button
-            type="button"
-            (click)="cancel()"
-            class="bg-gray-300 px-4 py-2 rounded"
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
-    </div>
-  `
+  templateUrl: './task-form.component.html',
+  styleUrls: ['./task-form.component.scss'],
 })
 export class TaskFormComponent implements OnInit {
   task: Partial<Task> = {

@@ -1,1 +1,58 @@
-<p>task-form works!</p>
+<div class="container">
+    <h1>{{ isEditing ? 'Edit Task' : 'Create New Task' }}</h1>
+  
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+  
+    <form (ngSubmit)="onSubmit()" #taskForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="task.title"
+          required
+        >
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          [(ngModel)]="task.description"
+          rows="3"
+        ></textarea>
+      </div>
+  
+      <div class="checkbox-group">
+        <input
+          type="checkbox"
+          id="completed"
+          name="completed"
+          [(ngModel)]="task.completed"
+        >
+        <label for="completed">Completed</label>
+      </div>
+  
+      <div class="button-group">
+        <button
+          type="submit"
+          [disabled]="!taskForm.form.valid || loading"
+          class="submit-btn"
+        >
+          {{ loading ? 'Saving...' : 'Save Task' }}
+        </button>
+        <button
+          type="button"
+          (click)="cancel()"
+          class="cancel-btn"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+  

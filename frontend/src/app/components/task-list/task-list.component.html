@@ -1,1 +1,39 @@
-<p>task-list works!</p>
+<div class="container">
+    <div class="header">
+      <h1>Task List</h1>
+      <button routerLink="/tasks/new" class="add-task-btn">Add Task</button>
+    </div>
+  
+    <div *ngIf="loading" class="loading">Loading...</div>
+  
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="!loading && tasks.length === 0" class="no-tasks">
+      No tasks found. Add a new task to get started!
+    </div>
+  
+    <div *ngIf="tasks.length > 0" class="task-list">
+      <div *ngFor="let task of tasks" class="task-item">
+        <div class="task-header">
+          <div class="task-info">
+            <input 
+              type="checkbox" 
+              [checked]="task.completed"
+              (change)="toggleStatus(task)"
+            >
+            <span [ngClass]="{'completed': task.completed}">
+              {{ task.title }}
+            </span>
+          </div>
+          <div class="task-actions">
+            <button (click)="editTask(task)" class="edit">Edit</button>
+            <button (click)="deleteTask(task.id)" class="delete">Delete</button>
+          </div>
+        </div>
+        <p *ngIf="task.description" class="description">{{ task.description }}</p>
+      </div>
+    </div>
+  </div>
+  
