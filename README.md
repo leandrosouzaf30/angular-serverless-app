@@ -12,9 +12,8 @@
 ## 🚀 Como Rodar o Projeto
 
 ### 1. Clonar o repositório
-
 ```bash
-git clone https://github.com/seu-usuario/task-manager.git
+git clone https://github.com/leandrosouzaf30/angular-serverless-app.git
 cd task-manager
 
 
